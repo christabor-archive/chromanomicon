@@ -1,0 +1,130 @@
+
+/* Optional classes */
+
+[data-typey-randomize-fonts] { }
+[data-typey-font-history] { }
+[data-typey-font-exporter] { }
+[data-typey-font-export] { }
+
+/* Main dropdown classes */
+
+[data-typey-editable] {
+    position: relative;
+}
+[data-typey-editable]:hover [data-typey-font-list] {
+    display: inline-block;
+}
+[data-typey-font-list] {
+    text-align: left;
+    background-color: #222;
+    color: #fff;
+    display: none;
+    font-family: Helvetica, Arial, sans-serif;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top:0;
+    z-index: 1000;
+}
+[data-typey-font-list] * {
+    font-size: 9px;
+}
+[data-typey-font-list],
+[data-typey-font-list] > li {
+    height: 30px;
+}
+[data-typey-font-list],
+.font-dropdown > ul {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+[data-typey-font-list] a {
+    border: 1px solid #777;
+    border-radius:4px;
+    color: #fff;
+    display: inline-block;
+    margin: 0 2px;
+    padding: 2px 10px;
+    text-decoration: none;
+}
+[data-typey-font-list] a:hover,
+[data-typey-font-list] a.active {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+[data-typey-font-list] ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+[data-typey-font-list] li {
+    border: 1px solid #333;
+    border-left: none;
+    border-right: none;
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin: 0;
+    padding: 0.7em;
+    width: auto;
+    position: relative;
+}
+[data-typey-font-list] > li {
+    display: inline-block;
+    float: left;
+    background-color: #333;
+    margin: 0 1px;
+    line-height: 24px;
+    padding: 2px 8px;
+}
+[data-typey-font-list] .font-dropdown:before {
+    color: white;
+    display: block;
+}
+[data-typey-font-list] .font-list:before {
+    content: 'Fonts';
+}
+[data-typey-font-list] .font-sizes:before {
+    content: 'Sizes';
+}
+[data-typey-font-list] .font-weights:before {
+    content: 'Weights';
+}
+[data-typey-font-list] .font-dropdown:hover {
+    background-color: #444;
+}
+[data-typey-font-list] .font-dropdown ul {
+    min-width: 500px;
+}
+[data-typey-font-list] li > ul {
+    background-color: black;
+    display: none;
+    height: 400px;
+    left: 0;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    top: 28px;
+    width: auto;
+    z-index: 1001;
+    border-top: 2px solid #555;
+    border-radius: 0 4px 4px 4px;
+}
+[data-typey-font-list] li:hover > ul {
+    display: block;
+}
+[data-typey-font-list] .font-dropdown li.active {
+    background-color: #000;
+}
+[data-typey-font-list] .font-dropdown li .variant {
+    border:1px solid #555;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+[data-typey-font-list] .font-dropdown li .variant:hover {
+    background-color: #444;
+    color:#fff;
+}

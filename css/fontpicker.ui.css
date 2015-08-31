@@ -1,0 +1,21 @@
+[data-typey-editable] {
+    border: 2px solid rgba(0, 0, 0, 0);
+    position: relative;
+}
+[data-typey-editable] .el {
+    display: none;
+    position: absolute;
+    font-size: 10px;
+    top: -12px;
+    right: -2px;
+    padding: 5px 10px;
+    height: 24px;
+    background-color: #ddd;
+    color: black;
+}
+[data-typey-editable]:hover {
+    border: 2px solid #ddd;
+}
+[data-typey-editable]:hover .el {
+    display: block;
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <title>Color generator</title>
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="css/vendor/jquery-ui.css">
+    <link rel="stylesheet" href="css/vendor/spectrum.css">
+    <link rel="stylesheet" href="css/vendor/jquery.typey.css">
+    <!-- <link rel="stylesheet/gss" type="text/gss" href="css/style.gss"></link> -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colorscheme.extensions.css">
+    <link rel="stylesheet" href="css/fontpicker.ui.css">
+
+    <link id="google-font-style" href='#' rel='stylesheet' type='text/css'>
+    <style type="text/css" id="newstyles"></style>
+    <style type="text/css" id="dynamic-font"></style>
+    <!--
+    <script src="https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/gss/v2.0.0/v2.0.0/gss.js"></script>
+    <script>
+        window.engine = new GSS(document);
+    </script>
+    -->
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+                <div id="controls">
+                    <p class="lead">Schkemer</p>
+
+                    <h3>Controls</h3>
+                    <p>Color mode</p>
+                    <select class="form-control input-sm" name="mode" id="mode">
+                        <option value="triad">triadic</option>
+                        <option value="tetrad">tetradic</option>
+                        <option value="splitcomplement">split complement</option>
+                        <!-- <option value="complement">complement</option> -->
+                        <option value="mono">monochromatic</option>
+                        <option value="analogous">analogous</option>
+                    </select>
+                    <a href="#" id="colorpicker" class="btn btn-block btn-info btn-xs">colorpicker</a>
+                    <p>Templates</p>
+                    <ul class="list-plain">
+                        <li>
+                            <a href=".bs3-loader" data-toggle="collapse" class="btn btn-block btn-success btn-xs">Toggle BS3 templates</a>
+                        </li>
+                    </ul>
+                    <ul class="list-plain" id="templates"></ul>
+                    <p>Other goodies</p>
+                    <ul class="list-plain">
+                        <li>
+                            <a class="btn btn-block btn-info btn-xs" href="#" id="random-button" data-typey-randomize-fonts>Random fonts!</a>
+                        </li>
+                        <li>
+                            <label>Gradient? <input type="checkbox" id="gradient"></label>
+                        </li>
+                        <li>
+                            <label>Noise? <input type="checkbox" id="noise"></label>
+                        </li>
+                    </ul>
+                    <ul id="font-list" class="list-plain" data-typey-font-history></ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+                <div id="socket"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VENDOR -->
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/spectrum.js"></script>
+    <script src="js/vendor/tinycolor-min.js"></script>
+    <script src="js/vendor/jquery.typey.js"></script>
+
+    <!-- LIB - COLOR -->
+    <script src="js/core.helpers.js"></script>
+    <script src="js/core.colors.random.js"></script>
+    <script src="js/core.fonts.js"></script>
+    <script src="js/core.schemes.js"></script>
+    <script src="js/init.js"></script>
+</body>
+</html>
