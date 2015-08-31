@@ -11,7 +11,11 @@ Having a background in design made this a bit easier, but I spent a lot of time 
 
 After a lot of trial and error, (see the first versions: http://christabor-archive.github.io/schkmer/), I decided to simplify things and focus on creating a *great blueprint for multi-sectional color scheme*.
 
-Also, it's worth pointing out, most of the heavy lifting is done by the fantastic [tinycolor](https://github.com/bgrins/TinyColor) library. This tool unifies some of the many utilities into one powerful color scheme generator.
+To that end, chromanomicon focuses on generating 3-color based sectional layouts, that borrow colors from each section to create a single cohesive look. This was a common thread I found in many of the popular app and website designs on dribbble. It also generates a black and white version, with some subtle highlights and colors.
+
+### CSS
+
+CSS Is generated automatically, and used within the page. The CSS is not ultra optimized, but used with a minifier, it can easily work out of the box. Just add bootstrap (or dont, just remember to delete any unecessary CSS), drop the stylesheet in, and add the section classes you want, however you want.
 
 ## What?
 
@@ -36,3 +40,7 @@ Other cool stuff out of the box:
 
 * Finish Bootstrap 3 state-based buttons (auto-adjusting of hue/saturation)
 * Any other polish of BS3
+
+### Notes/credits/etc
+
+Most of the heavy lifting is done by the fantastic [tinycolor](https://github.com/bgrins/TinyColor) library. This tool unifies some of the many utilities into one powerful color scheme generator.
