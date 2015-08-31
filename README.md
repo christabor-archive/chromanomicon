@@ -11,7 +11,7 @@ Having a background in design made this a bit easier, but I spent a lot of time 
 
 After a lot of trial and error, (see the first versions: http://christabor-archive.github.io/schkmer/), I decided to simplify things and focus on creating a *great blueprint for multi-sectional color scheme*.
 
-## What
+## What?
 
 My focus was to create an overall color scheme, using the following color harmonies:
 
