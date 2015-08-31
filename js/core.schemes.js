@@ -55,7 +55,7 @@ function generateColorScheme(color, opts) {
     // Section 4
     var btn_bg_sec4       = heading_sec1;
 
-    css_string += generateSectionCSS('.section-1', {
+    css_string += generateSectionCSS(opts.section_1_selector, {
         'base_bg': base_bg,
         'heading': heading_sec1,
         'fg_plain': fg_plain,
@@ -64,7 +64,7 @@ function generateColorScheme(color, opts) {
         'btn_bg': btn_bg_sec1
     }, opts);
 
-    css_string += generateSectionCSS('.section-2', {
+    css_string += generateSectionCSS(opts.section_2_selector, {
         'base_bg': base_bg_sec2,
         'heading': heading_sec2,
         'fg_plain': fg_plain_sec2,
@@ -73,7 +73,7 @@ function generateColorScheme(color, opts) {
         'btn_bg': btn_bg_sec2
     }, opts);
 
-   css_string += generateSectionCSS('.section-3', {
+   css_string += generateSectionCSS(opts.section_3_selector, {
         'base_bg': alt_bg,
         'heading': heading_sec3,
         'fg_plain': fg_plain_sec3,
@@ -83,7 +83,7 @@ function generateColorScheme(color, opts) {
     }, opts);
 
    // Dark neutral
-   css_string += generateSectionCSS('.section-4', {
+   css_string += generateSectionCSS(opts.section_4_selector, {
         'base_bg': '#000',
         'heading': heading_sec1,
         'fg_plain': '#fff',
@@ -93,7 +93,7 @@ function generateColorScheme(color, opts) {
     }, 3);
 
    // Light neutral
-   css_string += generateSectionCSS('.section-5', {
+   css_string += generateSectionCSS(opts.section_5_selector, {
         'base_bg': '#fff',
         'heading': heading_sec1,
         'fg_plain': '#000',
@@ -101,8 +101,7 @@ function generateColorScheme(color, opts) {
         'border': '#ccc',
         'btn_bg': '#000'
     }, opts);
-
-   $('#newstyles').html(css_string);
+   return css_string;
 }
 
 function cssIfy(prop, val) {
@@ -136,14 +135,11 @@ function optimizeFg(bg, fg, dark_base) {
     bg = tinycolor(bg).toHexString();
     fg = tinycolor(fg).toHexString();
     // Rectify all fg/bg combos:
-    console.log('Optimizing ---------');
     while(!tinycolor.isReadable(bg, fg)) {
         if(count >= MAX_ATTEMPTS) break;
-        console.log(bg, fg);
         fg = dark_base ? tinycolor(fg).lighten(ADJUST_INCREMENT).toHexString() : tinycolor(fg).darken(ADJUST_INCREMENT).toHexString();
         count += 1;
     }
-    console.log('End Optimizing ---------');
     return fg;
 }
 

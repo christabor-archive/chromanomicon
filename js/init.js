@@ -1,3 +1,4 @@
+var stopped = false;
 var FONTS_KEY = 'AIzaSyAM4K04yxd6F2-M6w8rEm4p97PMN6y2r0w';
 
 function checkReadable(bg, els) {
@@ -15,10 +16,17 @@ function exportCSS(styles) {
     $('#temp-font-style-font').html(font_css);
 }
 
+function generate(color, opts) {
+    console.log(opts);
+    var css_string = generateColorScheme(color, opts);
+    $('#css-export').val(css_string);
+    $('#newstyles').html(css_string);
+}
+
 function autoplay() {
     setInterval(function(){
-        generateColorScheme(randomColor(), getColorOpts());
-
+        if(stopped) return;
+        generate(randomColor(), getColorOpts());
         $('.section').find('h1').css('font-family', randomFont());
         $('.section').find('h2, h3, h4, h5, h6').css('font-family', randomFont());
         $('.section').css('font-family', randomFont());
@@ -29,14 +37,19 @@ function autoplay() {
 function getColorOpts() {
     return {
         color_mode: $('#mode').val().trim(),
-        use_gradient: $('#gradient').is(':checked')
+        use_gradient: $('#gradient').is(':checked'),
+        section_1_selector: $('#section-1-selector').val().trim(),
+        section_2_selector: $('#section-2-selector').val().trim(),
+        section_3_selector: $('#section-3-selector').val().trim(),
+        section_4_selector: $('#section-4-selector').val().trim(),
+        section_5_selector: $('#section-5-selector').val().trim()
     };
 }
 
 function initPage() {
     $('#socket').load('templates/blocks2.html', function(){
 
-        generateColorScheme(randomColor(), getColorOpts());
+        generate(randomColor(), getColorOpts());
         autoplay();
 
         $('#noise').on('click', function(e){
@@ -44,9 +57,11 @@ function initPage() {
         });
         $('#colorpicker').spectrum({
             move: function(color){
-                generateColorScheme(color, getColorOpts());
+                stopped = true;
+                generate(color, getColorOpts());
             }
         });
+        $('.section-class').on('keyup keypress keydown', reLabelSelectors);
         loadTestingElements();
     });
 }
@@ -95,7 +110,6 @@ function randomFont() {
 
 function loadFonts() {
     return;
-
     console.log('Loading fonts...');
     var els = $('h1, h2, p');
     // var els = $('h1, h2, h3, h4, h5, h6, p, ul, ol, dl, small');
@@ -111,13 +125,24 @@ function loadFonts() {
     loadFontUI();
 }
 
+function reLabelSelectors() {
+    $('.section').each(function(k, el){
+        var curr_selector = $('.section-class').eq(k).val();
+        if(curr_selector[0] == '#') {
+            $(el).attr('id', curr_selector.replace('#', ''));
+        } else {
+            $(el).addClass(curr_selector.replace('.', ''));
+        }
+    });
+}
+
 function loadTestingElements() {
     var total = $('.section').length;
     $('.section').each(function(k, el){
+        reLabelSelectors();
         k += 1;
-        $('#controls').find('#templates').append('<li><a class="btn btn-xs btn-block btn-default" href="#loader_' + k + '">View section ' + k + '</a></li>');
+        $('#controls').find('#templates').append('<li><a class="btn btn-xs btn-block btn-default" href="#section' + k + '">View section ' + k + '</a></li>');
         $(el).append('<div id="loader_' + k + '" class="bs3-loader collapse container"></div>');
-        // if(k === total) loadFonts();
         var callback = k === total ? loadFonts : (function(){});
         $('#loader_' + k).load('templates/app-bootstrap-type1.html', callback);
     });
