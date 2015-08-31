@@ -30,3 +30,7 @@ Other cool stuff out of the box:
 * Automatic adjustment of foreground/background colors to preserve clarity
 * Hover states
 
+## To-Do
+
+* Finish Bootstrap 3 state-based buttons (auto-adjusting of hue/saturation)
+* Any other polish of BS3
