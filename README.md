@@ -11,6 +11,8 @@ Having a background in design made this a bit easier, but I spent a lot of time 
 
 After a lot of trial and error, (see the first versions: http://christabor-archive.github.io/schkmer/), I decided to simplify things and focus on creating a *great blueprint for multi-sectional color scheme*.
 
+Also, it's worth pointing out, most of the heavy lifting is done by the fantastic [tinycolor](https://github.com/bgrins/TinyColor) library. This tool unifies some of the many utilities into one powerful color scheme generator.
+
 ## What?
 
 My focus was to create an overall color scheme, using the following color harmonies:
