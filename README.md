@@ -21,11 +21,11 @@ CSS Is generated automatically, and used within the page. The CSS is not ultra o
 
 My focus was to create an overall color scheme, using the following color harmonies:
 
-* Complementary
 * Triadic
 * Tetradic
 * Split Complementary
 * Monochromatic
+* Analogous
 
 Within each of these harmonies, a multi-section approach to colors has been created. This allows alternating the color harmonies in a few different forms, giving rise to complex designs that are consistent and harmonious.
 

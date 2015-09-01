@@ -7,50 +7,47 @@
     <link rel="stylesheet" href="css/vendor/jquery-ui.css">
     <link rel="stylesheet" href="css/vendor/spectrum.css">
     <link rel="stylesheet" href="css/vendor/jquery.typey.css">
-    <!-- <link rel="stylesheet/gss" type="text/gss" href="css/style.gss"></link> -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/colorscheme.extensions.css">
     <link rel="stylesheet" href="css/fontpicker.ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link id="google-font-style" href='#' rel='stylesheet' type='text/css'>
     <style type="text/css" id="newstyles"></style>
     <style type="text/css" id="dynamic-font"></style>
-    <!--
-    <script src="https://s3-us-west-2.amazonaws.com/cdn.thegrid.io/gss/v2.0.0/v2.0.0/gss.js"></script>
-    <script>
-        window.engine = new GSS(document);
-    </script>
-    -->
 </head>
 <body>
     <div class="container-fluid">
+        <div class="row visible-xs visible-sm centered mobile-message">
+            <div class="col-md-12">
+                <h2>Check this site out on desktop!</h2>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+            <div class="hidden-sm hidden-xs col-md-2 col-lg-2">
                 <div id="controls">
                     <p class="lead">chromanomicon</p>
-
                     <h3>Controls</h3>
                     <p>Color mode</p>
                     <select class="form-control input-sm" name="mode" id="mode">
                         <option value="triad">triadic</option>
                         <option value="tetrad">tetradic</option>
                         <option value="splitcomplement">split complement</option>
-                        <!-- <option value="complement">complement</option> -->
                         <option value="mono">monochromatic</option>
                         <option value="analogous">analogous</option>
                     </select>
-                    <a href="#" id="colorpicker" class="btn btn-block btn-info btn-xs">colorpicker</a>
+                    <a href="#" id="colorpicker" class="btn btn-info btn-xs"><span class="fa fa-eyedropper"></span>pick color</a>
                     <p>Templates</p>
                     <ul class="list-plain">
                         <li>
-                            <a href=".bs3-loader" data-toggle="collapse" class="btn btn-block btn-success btn-xs">Toggle BS3 templates</a>
+                            <a href=".bs3-loader" data-toggle="collapse" class="btn btn-success btn-xs">Toggle BS3 templates</a>
                         </li>
                     </ul>
                     <ul class="list-plain" id="templates"></ul>
-                    <p>Other goodies</p>
+                    <p>Other options</p>
                     <ul class="list-plain">
                         <li>
-                            <a class="btn btn-block btn-info btn-xs" href="#" id="random-button" data-typey-randomize-fonts>Random fonts!</a>
+                            <a class="btn btn-info btn-xs" href="#" id="random-button" data-typey-randomize-fonts>Random fonts!</a>
                         </li>
                         <li>
                             <label>Gradient? <input type="checkbox" id="gradient"></label>
@@ -60,19 +57,18 @@
                         </li>
                     </ul>
                     <p>Section class</p>
-                    <input type="text" id="section-1-selector" class="form-control section-class" value=".section1">
-                    <input type="text" id="section-2-selector" class="form-control section-class" value=".section2">
-                    <input type="text" id="section-3-selector" class="form-control section-class" value=".section3">
-                    <input type="text" id="section-4-selector" class="form-control section-class" value=".section4">
-                    <input type="text" id="section-5-selector" class="form-control section-class" value=".section5">
+                    <input type="text" id="section-1-selector" class="input-sm form-control section-class" value=".section1">
+                    <input type="text" id="section-2-selector" class="input-sm form-control section-class" value=".section2">
+                    <input type="text" id="section-3-selector" class="input-sm form-control section-class" value=".section3">
+                    <input type="text" id="section-4-selector" class="input-sm form-control section-class" value=".section4">
+                    <input type="text" id="section-5-selector" class="input-sm form-control section-class" value=".section5">
 
                     <p>Exported CSS</p>
                     <textarea id="css-export" cols="30" rows="10" class="form-control"></textarea>
-
                     <ul id="font-list" class="list-plain" data-typey-font-history></ul>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                 <div id="socket"></div>
             </div>
         </div>

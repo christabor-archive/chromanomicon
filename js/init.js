@@ -17,7 +17,6 @@ function exportCSS(styles) {
 }
 
 function generate(color, opts) {
-    console.log(opts);
     var css_string = generateColorScheme(color, opts);
     $('#css-export').val(css_string);
     $('#newstyles').html(css_string);
@@ -110,7 +109,6 @@ function randomFont() {
 
 function loadFonts() {
     return;
-    console.log('Loading fonts...');
     var els = $('h1, h2, p');
     // var els = $('h1, h2, h3, h4, h5, h6, p, ul, ol, dl, small');
     els.each(function(k, el){
@@ -126,8 +124,10 @@ function loadFonts() {
 }
 
 function reLabelSelectors() {
-    $('.section').each(function(k, el){
+    $('#socket').find('.section').each(function(k, el){
         var curr_selector = $('.section-class').eq(k).val();
+        // Footer shares an example class
+        if(k === 5) curr_selector = $('.section-class').eq(2).val();
         if(curr_selector[0] == '#') {
             $(el).attr('id', curr_selector.replace('#', ''));
         } else {
