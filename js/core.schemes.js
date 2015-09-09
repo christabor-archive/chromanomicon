@@ -148,8 +148,6 @@ function generateSectionCSS(container, opts, config_opts) {
     var container_css = container;
     var el = $(container);
     var dark_base = tinycolor(opts.base_bg).isDark();
-    var TO_DARK_HOVER = true;
-    var OPTIMIZE_COLORS = true;
 
     /**
      * Color Vars --------------------------------------------------------------
@@ -163,8 +161,8 @@ function generateSectionCSS(container, opts, config_opts) {
     // Buttons
     var btn_bg = opts.btn_bg;
     var btn_fg = tinycolor(btn_bg).isDark() ? tinycolor(btn_bg).lighten(40).toHexString() : tinycolor(btn_bg).darken(40).toHexString();
-    var btn_hover_bg = TO_DARK_HOVER ? tinycolor(btn_bg).darken(10).toHexString() : tinycolor(btn_bg).lighten(10).toHexString();
-    var btn_hover_border = TO_DARK_HOVER ? tinycolor(opts.border).darken(10).toHexString() : tinycolor(opts.border).lighten(10).toHexString();
+    var btn_hover_bg = config_opts.dark_color ? tinycolor(btn_bg).darken(10).toHexString() : tinycolor(btn_bg).lighten(10).toHexString();
+    var btn_hover_border = config_opts.dark_color ? tinycolor(opts.border).darken(10).toHexString() : tinycolor(opts.border).lighten(10).toHexString();
 
     // Headings
     var heading1_fg = dark_base ? tinycolor(opts.base_bg).lighten(30).toHexString() : tinycolor(opts.base_bg).darken(30).toHexString();
@@ -175,7 +173,7 @@ function generateSectionCSS(container, opts, config_opts) {
 
     // Links/link like things
     var link_fg = btn_bg;
-    var link_fg_hover = TO_DARK_HOVER ? tinycolor(link_fg).darken(10).toHexString() : tinycolor(link_fg).lighten(10).toHexString();
+    var link_fg_hover = config_opts.dark_color ? tinycolor(link_fg).darken(10).toHexString() : tinycolor(link_fg).lighten(10).toHexString();
 
     // Accents etc
     var base_accent = opts.accent;
@@ -183,7 +181,7 @@ function generateSectionCSS(container, opts, config_opts) {
     /**
      * Optimize all combos -----------------------------------------------------
      */
-    if(OPTIMIZE_COLORS) {
+    if(config_opts.optimize_colors) {
         base_fg = optimizeFg(base_bg, base_fg, dark_base);
         heading1_fg = optimizeFg(base_bg, heading1_fg, dark_base);
         heading2_plus_fg = optimizeFg(base_bg, heading2_plus_fg, dark_base);

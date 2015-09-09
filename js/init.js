@@ -29,7 +29,6 @@ function autoplay() {
         $('.section').find('h1').css('font-family', randomFont());
         $('.section').find('h2, h3, h4, h5, h6').css('font-family', randomFont());
         $('.section').css('font-family', randomFont());
-
     }, 3000);
 }
 
@@ -37,6 +36,8 @@ function getColorOpts() {
     return {
         color_mode: $('#mode').val().trim(),
         use_gradient: $('#gradient').is(':checked'),
+        dark_color: $('#hover-dark').is(':checked'),
+        optimize_colors: $('#optimize-colors').is(':checked'),
         section_1_selector: $('#section-1-selector').val().trim(),
         section_2_selector: $('#section-2-selector').val().trim(),
         section_3_selector: $('#section-3-selector').val().trim(),
@@ -51,6 +52,7 @@ function initPage() {
         generate(randomColor(), getColorOpts());
         autoplay();
 
+        if($('#noise').is(':checked')) $('.section').toggleClass('noisy');
         $('#noise').on('click', function(e){
             $('.section').toggleClass('noisy');
         });
