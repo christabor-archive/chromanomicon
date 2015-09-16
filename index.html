@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="hidden-sm hidden-xs col-md-2 col-lg-2">
+            <div class="hidden-sm hidden-xs col-md-2 col-lg-2" id="left-panel">
                 <div id="controls">
                     <p class="lead">chromanomicon</p>
                     <h3>Controls</h3>
@@ -69,7 +69,8 @@
                     <textarea id="css-export" cols="30" rows="10" class="form-control"></textarea>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" id="main-col">
+                <a href="#" id="swappable" class="btn btn-xs btn-default" data-swap='{"#swappable": [{"": ".btn"}], "#left-panel": [{"": ".hidden-lg"}], "#main-col": [{".col-lg-10": ".col-lg-12"}]}' data-toggle="swappable">.<br>.<br>.</a>
                 <div id="socket"></div>
             </div>
         </div>
@@ -80,6 +81,7 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/spectrum.js"></script>
     <script src="js/vendor/tinycolor-min.js"></script>
+    <script src="js/vendor/jquery.supertoggle.js"></script>
 
     <!-- LIB - COLOR -->
     <script src="js/core.helpers.js"></script>

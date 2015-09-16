@@ -62,6 +62,7 @@ function initPage() {
                 generate(color, getColorOpts());
             }
         });
+        $('[data-toggle="swappable"]').on('click', supertoggle);
         $('.section-class').on('keyup keypress keydown', reLabelSelectors);
         loadTestingElements();
     });
