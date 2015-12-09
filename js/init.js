@@ -1,15 +1,7 @@
 var autoplay_func = null;
 var example_templates = {
     'default': 'blocks2.html',
-    'blocks alt': 'blocks.html',
-    'HTML tags': 'tags.html',
-    'bs3 example - blog': 'bs3-examples-blog.html',
-    'startup': 'startup-style.html',
-    'bs3': 'bootstrap.html',
-    'bs3 nested': 'bootstrap-nested.html',
-    'bs3-app 1': 'app-bootstrap-type1.html',
-    'bs3-app 2': 'app-bootstrap-type2.html',
-    'bs3-app 3': 'app-bootstrap-type3.html',
+    'bs3 example - blog': 'bs3-examples-blog.html'
 };
 var stopped = false;
 var FONTS_KEY = 'AIzaSyAM4K04yxd6F2-M6w8rEm4p97PMN6y2r0w';
