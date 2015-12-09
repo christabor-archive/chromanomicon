@@ -70,6 +70,9 @@ h1 {
 .mobile-message {
     padding: 20px;
 }
+.container-padded {
+    padding: 20px;
+}
 input {
     margin: 2px 0;
 }

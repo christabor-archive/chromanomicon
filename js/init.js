@@ -1,5 +1,19 @@
+var autoplay_func = null;
+var example_templates = {
+    'default': 'blocks2.html',
+    'blocks alt': 'blocks.html',
+    'HTML tags': 'tags.html',
+    'bs3 example - blog': 'bs3-examples-blog.html',
+    'startup': 'startup-style.html',
+    'bs3': 'bootstrap.html',
+    'bs3 nested': 'bootstrap-nested.html',
+    'bs3-app 1': 'app-bootstrap-type1.html',
+    'bs3-app 2': 'app-bootstrap-type2.html',
+    'bs3-app 3': 'app-bootstrap-type3.html',
+};
 var stopped = false;
 var FONTS_KEY = 'AIzaSyAM4K04yxd6F2-M6w8rEm4p97PMN6y2r0w';
+var active_template = example_templates['default'];
 
 function checkReadable(bg, els) {
     if(!allReadable(bg, els)) {
@@ -23,7 +37,8 @@ function generate(color, opts) {
 }
 
 function autoplay() {
-    setInterval(function(){
+    if(autoplay_func !== null) clearInterval(autoplay_func);
+    autoplay_func = setInterval(function(){
         if(stopped) return;
         generate(randomColor(), getColorOpts());
         $('.section').find('h1').css('font-family', randomFont());
@@ -46,26 +61,40 @@ function getColorOpts() {
     };
 }
 
-function initPage() {
-    $('#socket').load('templates/blocks2.html', function(){
+function loadPageCallback() {
+    generate(randomColor(), getColorOpts());
+    autoplay();
 
-        generate(randomColor(), getColorOpts());
-        autoplay();
-
-        if($('#noise').is(':checked')) $('.section').toggleClass('noisy');
-        $('#noise').on('click', function(e){
-            $('.section').toggleClass('noisy');
-        });
-        $('#colorpicker').spectrum({
-            move: function(color){
-                stopped = true;
-                generate(color, getColorOpts());
-            }
-        });
-        $('[data-toggle="swappable"]').on('click', supertoggle);
-        $('.section-class').on('keyup keypress keydown', reLabelSelectors);
-        loadTestingElements();
+    if($('#noise').is(':checked')) $('.section').toggleClass('noisy');
+    $('#noise').on('click', function(e){
+        $('.section').toggleClass('noisy');
     });
+    $('#colorpicker').spectrum({
+        move: function(color){
+            stopped = true;
+            generate(color, getColorOpts());
+        }
+    });
+    $('#toggle-sections').on('click', function(){
+        // Empty out the values first, then just call relabel.
+        $('.section-class').val('#socket');
+        reLabelSelectors();
+    });
+    $('[data-toggle="swappable"]').on('click', supertoggle);
+    $('.section-class').on('keyup keypress keydown', reLabelSelectors);
+    loadTestingElements();
+}
+
+function loadTemplate(e) {
+    $('#socket').load('templates/' + $(this).val().replace('#', '').trim(), loadPageCallback);
+}
+
+function initPage() {
+    $.each(example_templates, function(nicename, filename){
+        $('#files').append('<option value="' + filename + '">' + nicename + '</option>');
+    });
+    $('#files').on('change', loadTemplate);
+    $('#socket').load('templates/' + active_template, loadPageCallback);
 }
 
 function randomFont() {
@@ -127,6 +156,8 @@ function loadFonts() {
 }
 
 function reLabelSelectors() {
+    // Re-label sections using the given css,
+    // for customizing css selectors and css output.
     $('#socket').find('.section').each(function(k, el){
         var curr_selector = $('.section-class').eq(k).val();
         // Footer shares an example class
@@ -141,14 +172,16 @@ function reLabelSelectors() {
 
 function loadTestingElements() {
     var total = $('.section').length;
+    $('#templates').empty();
     $('.section').each(function(k, el){
-        reLabelSelectors();
         k += 1;
         $('#controls').find('#templates').append('<li><a class="btn btn-xs btn-block btn-default" href="#section' + k + '">View section ' + k + '</a></li>');
         $(el).append('<div id="loader_' + k + '" class="bs3-loader collapse container"></div>');
         var callback = k === total ? loadFonts : (function(){});
         $('#loader_' + k).load('templates/app-bootstrap-type1.html', callback);
     });
+    // Relabel them all
+    reLabelSelectors();
 }
 
 $(document).ready(initPage);

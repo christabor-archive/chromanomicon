@@ -32,7 +32,7 @@
                         <option value="triad">triadic</option>
                         <option value="tetrad">tetradic</option>
                         <option value="splitcomplement">split complement</option>
-                        <option value="mono">monochromatic</option>
+                        <option value="">monochromatic</option>
                         <option value="analogous">analogous</option>
                     </select>
                     <a href="#" id="colorpicker" class="btn btn-info btn-xs"><span class="fa fa-eyedropper"></span>pick color</a>
@@ -43,6 +43,8 @@
                         </li>
                     </ul>
                     <ul class="list-plain" id="templates"></ul>
+                    <p>Load other templates</p>
+                    <select class="form-control input-sm" id="files"></select>
                     <p>Other options</p>
                     <ul class="list-plain">
                         <li>
@@ -59,6 +61,7 @@
                         </li>
                     </ul>
                     <p>Section class</p>
+                    <label><input type="checkbox" data-toggle="swappable" data-swap='{".section-class": [{"": ".hidden"}]}' id="toggle-sections"> No sections?</label>
                     <input type="text" id="section-1-selector" class="input-sm form-control section-class" value=".section1">
                     <input type="text" id="section-2-selector" class="input-sm form-control section-class" value=".section2">
                     <input type="text" id="section-3-selector" class="input-sm form-control section-class" value=".section3">
