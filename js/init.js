@@ -170,7 +170,7 @@ function loadTestingElements() {
         $('#controls').find('#templates').append('<li><a class="btn btn-xs btn-block btn-default" href="#section' + k + '">View section ' + k + '</a></li>');
         $(el).append('<div id="loader_' + k + '" class="bs3-loader collapse container"></div>');
         var callback = k === total ? loadFonts : (function(){});
-        $('#loader_' + k).load('templates/app-bootstrap-type1.html', callback);
+        $('#loader_' + k).load('templates/bootstrap-plain.html', callback);
     });
     // Relabel them all
     reLabelSelectors();

@@ -16,7 +16,7 @@ function getSaturationDifference(color1, color2) {
 function generateColorScheme(color, opts) {
     var _colors       = null;
     var css_string    = '';
-    var accent_offset = 25;
+    var accent_offset = 30;
 
     if(opts.color_mode === 'triad') _colors           = tinycolor(color).triad();
     if(opts.color_mode === 'tetrad') _colors          = tinycolor(color).tetrad();
@@ -40,13 +40,13 @@ function generateColorScheme(color, opts) {
     var fg_plain_sec2 = tinycolor(heading_sec1).isDark() ? _colors[1].lighten(30).toHexString() : _colors[1].darken(30).toHexString();
     var base_bg_sec2  = heading_sec1;
     var heading_sec2  = tinycolor(heading_sec1);
-       heading_sec2  = heading_sec2.isDark ? heading_sec2.lighten(30).toHexString() : heading_sec2.darken(30).toHexString();
+        heading_sec2  = heading_sec2.isDark ? heading_sec2.lighten(30).toHexString() : heading_sec2.darken(30).toHexString();
     var btn_bg_sec2   = base_bg;
 
     // Section 3
     var accent_sec3   = tinycolor(alt_bg).isDark() ? tinycolor(alt_bg).lighten(accent_offset).toHexString() : tinycolor(alt_bg).darken(accent_offset).toHexString();
     var fg_plain_sec3 = tinycolor(_colors[1].toHexString());
-       fg_plain_sec3 = tinycolor(alt_bg).isDark() ? fg_plain_sec3.lighten(30).toHexString() : fg_plain_sec3.darken(30).toHexString();
+        fg_plain_sec3 = tinycolor(alt_bg).isDark() ? fg_plain_sec3.lighten(30).toHexString() : fg_plain_sec3.darken(30).toHexString();
     var border_sec3   = tinycolor(heading_sec1).isDark() ? tinycolor(heading_sec1).lighten(10).toHexString() : tinycolor(heading_sec1).darken(10).toHexString();
     var btn_fg_sec3   = tinycolor(heading_sec1).isDark() ? '#fff' : '#000';
     var heading_sec3  = tinycolor(alt_bg).isDark() ? tinycolor(heading_sec1).lighten(30).toHexString() : tinycolor(heading_sec1).darken(30).toHexString();
@@ -172,7 +172,7 @@ function generateSectionCSS(container, opts, config_opts) {
     // var heading2_plus_fg = dark_base ? tinycolor(opts.heading).lighten(10).toHexString() : tinycolor(opts.heading).darken(10).toHexString();
 
     // Links/link like things
-    var link_fg = btn_bg;
+    var link_fg = tinycolor(btn_bg).isDark() ? tinycolor(btn_bg).lighten(20).toHexString() : tinycolor(btn_bg).lighten(20).toHexString();
     var link_fg_hover = config_opts.dark_color ? tinycolor(link_fg).darken(10).toHexString() : tinycolor(link_fg).lighten(10).toHexString();
 
     // Accents etc
@@ -251,6 +251,8 @@ function generateSectionCSS(container, opts, config_opts) {
         '.nav-pills>li.active>a:hover',
         '.nav-pills>li.active>a:focus',
 
+        '.modal-content',
+
         '.navbar-inverse .navbar-nav>.active>a',
         '.navbar-inverse .navbar-nav>.active>a:hover',
         '.navbar-inverse .navbar-nav>.active>a:focus'
@@ -328,33 +330,45 @@ function generateSectionCSS(container, opts, config_opts) {
     ]), props10);
 
     // BS3 white bg widgets
-    var props11 = {'background-color': dark_base ? tinycolor(opts.base_bg).lighten(20).toHexString() : tinycolor(opts.base_bg).lighten(20).toHexString()};
+    var props11 = {
+        'background-color': dark_base ? tinycolor(opts.base_bg).lighten(20).toHexString() : tinycolor(opts.base_bg).lighten(20).toHexString(),
+        'border-color': dark_base ? tinycolor(opts.base_bg).lighten(10).toHexString() : tinycolor(opts.base_bg).lighten(10).toHexString(),
+    };
     // TODO: cleanup - lot of code generated here.
+    css += cssIfyAll(allSubselectors(container_css, [
+        '.pager .disabled>a',
+        '.pager .disabled>span',
+        '.breadcrumb',
+
+        '.nav-tabs>li.active>a',
+
+        '.pagination>li>a',
+        '.pagination>li>span',
+        '.pagination>.disabled>span',
+        '.pagination>.disabled>a'
+    ]), props11);
+
+    var props12 = {
+        'background-color': dark_base ? tinycolor(opts.base_bg).lighten(10).toHexString() : tinycolor(opts.base_bg).lighten(10).toHexString(),
+        'color': dark_base ? tinycolor(opts.base_fg).lighten(30).toHexString() : tinycolor(opts.base_fg).lighten(30).toHexString()
+    };
     css += cssIfyAll(allSubselectors(container_css, [
         '.pagination>li>a:hover',
         '.pagination>li>span:hover',
         '.pagination>li>a:focus',
         '.pagination>li>span:focus',
 
-        '.pager .disabled>a',
         '.pager .disabled>a:hover',
         '.pager .disabled>a:focus',
-        '.pager .disabled>span',
-        '.breadcrumb',
 
-        '.nav-tabs>li.active>a',
         '.nav-tabs>li.active>a:hover',
         '.nav-tabs>li.active>a:focus',
 
-        '.pagination>li>a',
-        '.pagination>li>span',
-        '.pagination>.disabled>span',
         '.pagination>.disabled>span:hover',
         '.pagination>.disabled>span:focus',
-        '.pagination>.disabled>a',
         '.pagination>.disabled>a:hover',
         '.pagination>.disabled>a:focus'
-    ]), props11);
+    ]), props12);
 
     // TODO:
     // var saturation_difference = getSaturationDifference(tinycolor(btn_bg).toHsl(), _states_original['success']);
