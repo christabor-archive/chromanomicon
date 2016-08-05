@@ -3,7 +3,12 @@ A robust color scheme generator -- multiple sections, color harmonies and more. 
 
 ## Why?
 
-I liked tools like https://github.com/rriepe/1pxdeep, https://github.com/wizardg/paintstrap, and https://github.com/mquan/lavish, but they either 1. Only offer shades of color, making it very limited, or 2. Were generated without any guidance on preventing clashing or hard-to-read color schemes. In short, it didn't really "design" a scheme, just generated a semblance of color. While totally awesome in their own right, they seemed lacking for a full-fledged website scheme that you might expect a professional to create.
+I liked tools like https://github.com/rriepe/1pxdeep, https://github.com/wizardg/paintstrap, and https://github.com/mquan/lavish, but they either:
+
+1. Only offer shades of color, making it very limited
+2. Were generated without any guidance on preventing clashing or hard-to-read color schemes.
+
+In short, it didn't really "design" a scheme, just generated a semblance of color. While totally awesome in their own right, they seemed lacking for a full-fledged website scheme that you might expect a professional to create.
 
 ## How?
 
